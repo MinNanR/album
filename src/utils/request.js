@@ -1,14 +1,14 @@
-const baseUrl = "http://192.168.10.2:2000/rental"
-// const baseUrl = "https://minnan.site:2002/rental"
+const baseUrl = "http://192.168.43.106:8101/"
+    // const baseUrl = "https://minnan.site:2002/rental"
 import localstorage from './localstorage.js'
 
 const request = {
-    post: function (url, param) {
+    post: function(url, param) {
         let header = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
-        let token = localstorage.getStorage("token")
+        let token = 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyZWFsTmFtZSI6IuawkemaviIsInN1YiI6Im1pbiIsInN0YW1wIjoiZGE3NWE4ZTUyY2UwNGNjZWIzMTdhODVkMTVkNjUyZGIiLCJpZCI6MSwiZXhwIjoxNjIyMDQ1NTY5LCJpYXQiOjE2MjE0NDA3Njl9.lPifFb3DxorHLHzGTGh863sqhqAAS6vCHoTv_wQqTsENGy3thInGYg2Lbuv8uGD8fD0EUp7jHRQWKngoYn9rUQ'
         if (token !== null && token !== '') {
             header.Authorization = token
         }
@@ -66,7 +66,7 @@ const request = {
         })
     },
 
-    get: function (url, param) {
+    get: function(url, param) {
         return new Promise(resolve => {
             uni.request({
                 url: `${baseUrl}${url}`,
